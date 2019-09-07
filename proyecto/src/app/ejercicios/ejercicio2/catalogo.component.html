@@ -1,0 +1,50 @@
+<h1>{{title}}</h1>
+<app-header></app-header>
+
+<p *ngIf="!prodService.cargando">
+    aqui se visualizan los productos
+</p>
+<div class="contendor">
+    <form action="">
+        <fieldset>
+            <legend>
+                Seleccione una Opcion
+            </legend>
+            <select name="seleccion" id="selector" (change)="this.opcion = $event.target.value; arreglo = []">
+                <option *ngFor="let prod of prodService.products" [value]="prod.cod">
+                    {{prod.categoria}}
+                </option>
+            </select>
+            <div>
+                <label for="tituloProd">Titulo del producto que desea buscar </label>
+                <input type="text" name="descripcion" id="tituloProd" #miTexto (keyup.enter)="buscar(miTexto.value)">
+            </div>
+        </fieldset>
+    </form>
+    <table border=3>
+        <thead>
+            <th>titulo de la obra</th>
+            <th>url de referencia <br>
+                imagen no creada.
+            </th>
+        </thead>
+        <tr *ngFor="let item of this.listar(this.opcion)">
+    
+            <td>
+                {{item.titulo}}
+            </td>
+            <td>
+                {{item.url}}
+            </td>
+        </tr>
+    </table>
+</div>
+
+
+
+
+
+<!-- <div class="misProductos" *ngFor="let prod of prodService.products">
+    {{prod.titulo}} {{prod.categoria}}
+    <img src="assets/productos/{{prod.url}}.jpg" alt="{{prod.cod}}" width="8%">
+</div> -->

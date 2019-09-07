@@ -1,0 +1,7 @@
+input:invalid {
+            border-color: #D31F6B;
+        }
+
+input:valid {
+            border-color: green;
+        }

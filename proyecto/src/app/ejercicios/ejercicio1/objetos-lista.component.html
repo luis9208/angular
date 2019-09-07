@@ -1,0 +1,40 @@
+
+<h2>{{ title }}</h2>
+
+<div class="contendor">
+    <form action="">
+        <fieldset>
+            <legend>
+                Seleccione una Opcion
+            </legend>
+            <select name="seleccion" id="selector" (change)="opcion = $event.target.value; arreglo = []">
+                <option *ngFor="let item of grados" [value]="item.id">
+                    {{item.nombre}}
+                </option>
+            </select>
+        </fieldset>
+    </form>
+</div>
+
+<table border=3>
+    <thead>
+        <th>Id Est</th>
+        <th>Nombre de Estudiante</th>
+        <th>cursa </th>
+    </thead>
+    <tr *ngFor="let item of listar(opcion)">
+
+        <td>
+            {{item.id}}
+        </td>
+        <td>
+            {{item.nombre}}
+        </td>
+        <td>
+            {{getNombreGrado(item.idCurso)}}
+        </td>
+    </tr>
+</table>
+<p>
+    has ecogido el # {{opcion}}
+</p>
